@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode (default) — Deep Red, Warm Cream, Orange */
+    --background: 40 40% 96%;
+    --foreground: 20 20% 12%;
+    --card: 40 50% 99%;
+    --card-foreground: 20 20% 12%;
+    --popover: 40 50% 99%;
+    --popover-foreground: 20 20% 12%;
+    --primary: 355 75% 40%;
+    --primary-foreground: 40 50% 98%;
+    --secondary: 40 35% 90%;
+    --secondary-foreground: 20 20% 15%;
+    --muted: 40 30% 92%;
+    --muted-foreground: 20 10% 42%;
+    --accent: 25 85% 52%;
+    --accent-foreground: 20 20% 10%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 40 50% 98%;
+    --border: 40 25% 82%;
+    --input: 40 30% 86%;
+    --ring: 355 75% 40%;
+    --radius: 0.75rem;
+
+    --brand-red: 355 75% 40%;
+    --brand-red-light: 355 65% 52%;
+    --brand-red-dark: 355 80% 28%;
+    --brand-cream: 40 40% 96%;
+    --brand-cream-warm: 38 45% 93%;
+    --brand-orange: 25 85% 52%;
+    --brand-orange-light: 28 90% 60%;
+    --brand-orange-dark: 22 80% 42%;
+    --brand-gold: 38 70% 48%;
+
+    --hero-overlay: 20 25% 8% / 0.55;
+  }
+
+  .dark {
+    /* Dark mode — Pure black background, deep red accents */
+    --background: 0 0% 0%;
+    --foreground: 40 30% 93%;
+    --card: 0 0% 6%;
+    --card-foreground: 40 30% 93%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 40 30% 93%;
+    --primary: 355 65% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 30% 93%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 28 85% 55%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 14%;
+    --ring: 355 65% 52%;
+
+    --brand-red: 355 65% 52%;
+    --brand-red-light: 355 60% 62%;
+    --brand-red-dark: 355 70% 35%;
+    --brand-cream: 0 0% 8%;
+    --brand-cream-warm: 0 0% 10%;
+    --brand-orange: 28 85% 55%;
+    --brand-orange-light: 28 90% 62%;
+    --brand-orange-dark: 22 75% 45%;
+    --brand-gold: 38 65% 55%;
+
+    --hero-overlay: 0 0% 0% / 0.75;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Hind Siliguri', sans-serif;
+  }
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-bengali {
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-brand-red { color: hsl(var(--brand-red)); }
+  .bg-brand-red { background-color: hsl(var(--brand-red)); }
+  .border-brand-red { border-color: hsl(var(--brand-red)); }
+  .text-brand-orange { color: hsl(var(--brand-orange)); }
+  .bg-brand-orange { background-color: hsl(var(--brand-orange)); }
+  .text-brand-gold { color: hsl(var(--brand-gold)); }
+  .bg-brand-gold { background-color: hsl(var(--brand-gold)); }
+
+  .bg-gradient-red {
+    background: linear-gradient(135deg, hsl(var(--brand-red-dark)) 0%, hsl(var(--brand-red)) 50%, hsl(var(--brand-red-light)) 100%);
+  }
+  .bg-gradient-orange {
+    background: linear-gradient(135deg, hsl(var(--brand-orange-dark)) 0%, hsl(var(--brand-orange)) 50%, hsl(var(--brand-orange-light)) 100%);
+  }
+  .bg-gradient-festival {
+    background: linear-gradient(135deg, hsl(var(--brand-cream)) 0%, hsl(var(--brand-cream-warm)) 100%);
+  }
+  .bg-gradient-hero {
+    background: linear-gradient(180deg, hsl(var(--hero-overlay)) 0%, hsl(20 25% 8% / 0.3) 40%, hsl(20 25% 8% / 0.75) 100%);
+  }
+  .text-gradient-red {
+    background: linear-gradient(135deg, hsl(var(--brand-red-light)) 0%, hsl(var(--brand-red)) 40%, hsl(var(--brand-orange)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .shadow-red { box-shadow: 0 4px 20px hsl(var(--brand-red) / 0.25); }
+  .shadow-red-lg { box-shadow: 0 8px 40px hsl(var(--brand-red) / 0.35); }
+  .shadow-orange { box-shadow: 0 4px 20px hsl(var(--brand-orange) / 0.25); }
+  .shadow-gold { box-shadow: 0 4px 20px hsl(var(--brand-gold) / 0.3); }
+  .shadow-gold-lg { box-shadow: 0 8px 40px hsl(var(--brand-gold) / 0.4); }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(38 70% 42%) 0%, hsl(38 80% 50%) 50%, hsl(42 85% 58%) 100%);
+  }
+
+  .glass {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+  .glass-strong {
+    background: hsl(var(--card) / 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+  .glass-dark {
+    background: hsl(0 0% 5% / 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--brand-orange) / 0.15);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--brand-orange) / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(var(--brand-orange) / 0.5); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+.animate-scale-in { animation: scale-in 0.4s ease-out forwards; }
+.animate-slide-in-right { animation: slide-in-right 0.5s ease-out forwards; }
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, hsl(var(--brand-orange) / 0.3), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Print styles for raffle coupons */
+@media print {
+  body * { visibility: hidden; }
+  .print-area, .print-area * { visibility: visible; }
+  .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    padding: 10mm;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  .print-area * {
+    color: #000000 !important;
+  }
+  .no-print { display: none !important; }
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  .coupon-page-break { page-break-after: always; }
+  .coupon-page-break:last-child { page-break-after: auto; }
+  .raffle-coupon {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px dashed #000000 !important;
+    padding: 12px !important;
+    margin: 8px !important;
+  }
+  .raffle-coupon * {
+    color: #000000 !important;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--brand-red) / 0.4); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--brand-red) / 0.6); }
+
+/* Carousel hide scrollbar */
+.carousel-hide-scroll::-webkit-scrollbar { display: none; }
+.carousel-hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
