@@ -160,15 +160,15 @@ export default function CrudPanel({ config }: { config: CrudConfig }) {
 
       {/* Form Modal */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-16 bg-black/50" onClick={() => setShowForm(false)}>
-          <div className="glass-strong rounded-2xl p-6 border border-border/30 max-w-md w-full max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/50" onClick={() => setShowForm(false)}>
+          <div className="glass-strong rounded-2xl border border-border/30 max-w-md w-full max-h-[90vh] flex flex-col overflow-hidden" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-6 pb-4 shrink-0">
               <h3 className={`font-display text-lg font-bold text-primary ${isBn ? 'font-bengali' : ''}`}>
                 {editing ? t.admin.crud.edit : t.admin.crud.add}
               </h3>
               <button onClick={() => setShowForm(false)} className="p-1 rounded-lg text-foreground/50 hover:text-foreground transition-colors"><X className="w-5 h-5" /></button>
             </div>
-            <div className="space-y-4">
+            <div className="px-6 pb-4 space-y-4 overflow-y-auto flex-1">
               {config.fields.map((field) => (
                 <div key={field.key}>
                   <label className={`block text-sm font-medium text-foreground/80 mb-2 ${isBn ? 'font-bengali' : ''}`}>{field.label}</label>
@@ -188,7 +188,7 @@ export default function CrudPanel({ config }: { config: CrudConfig }) {
                 </div>
               ))}
             </div>
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 p-6 pt-4 border-t border-border/20 shrink-0">
               <button onClick={() => setShowForm(false)} className={`flex-1 px-4 py-2.5 rounded-xl glass border border-border/40 text-foreground/70 font-medium text-sm hover:border-border/60 transition-all ${isBn ? 'font-bengali' : ''}`}>{t.admin.crud.cancel}</button>
               <button onClick={handleSave} disabled={saving} className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-gold text-white font-bold text-sm shadow-gold transition-all disabled:opacity-50">
                 {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : null} {t.admin.crud.save}
