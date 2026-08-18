@@ -98,7 +98,7 @@ Two independent dials:
   (Kubernetes, ECS, Fly) already scales by replica; use `0` on a single large box.
 
 Without Docker: `npm run build:backend && npm run start:backend` runs
-`dist/cluster.js`, which forks `CLUSTER_WORKERS` processes sharing one port and
+`dist/index.js`, which forks `CLUSTER_WORKERS` processes sharing one port and
 replaces any worker that dies. At `CLUSTER_WORKERS=1` it skips forking entirely,
 which is what the Hostinger app uses.
 
@@ -201,7 +201,7 @@ back to a non-atomic capacity check.
 Node 20 and 22, so neither can block or break the other:
 
 **Backend** — `npm ci`, typecheck, build, then `scripts/smoke-test.mjs`. That boots
-`dist/cluster.js` exactly as Hostinger does and asserts 20 behaviours needing no
+`dist/index.js` exactly as Hostinger does and asserts 20 behaviours needing no
 database: startup, login, role separation, input validation, the content-table
 whitelist, CORS in both directions, and graceful shutdown.
 

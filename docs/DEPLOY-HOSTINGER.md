@@ -9,9 +9,27 @@ pointed at its own directory in the repository:
 | App | Domain | Directory | Build command | Start / entry |
 | --- | --- | --- | --- | --- |
 | Foodiana Web | `your-domain.com` | `frontend` | `npm run build` | `npm start` (`next start`) |
-| Foodiana API | `api.your-domain.com` | `backend` | `npm run build` | `dist/cluster.js` |
+| Foodiana API | `api.your-domain.com` | `backend` | `npm run build` | `npm start` |
 
 That uses 2 of your 5 Node.js app slots.
+
+## Two Hostinger constraints this repo is shaped around
+
+Both were found the hard way, so they are worth stating up front.
+
+**1. The build runs with production dependencies only.** Hostinger installs with
+devDependencies skipped, so a build tool in `devDependencies` simply is not on
+disk and the build dies with `sh: tsc: command not found`. Anything the *build*
+needs is therefore a regular dependency — `typescript` and `@types/node` are in
+`backend/dependencies` for exactly this reason, not by accident. (The frontend was
+never affected: it has no devDependencies at all.)
+
+**2. A framework preset owns the entry point.** The Fastify preset rejects a
+custom `Entry file` outright — *"Fastify framework does not support custom Entry
+File configuration"* — and starts the app the standard way instead. So the backend
+has exactly **one** entry point, `dist/index.js`, referenced by both `main` and
+the `start` script. Clustering is selected by the `CLUSTER_WORKERS` environment
+variable at runtime, never by pointing at a second file.
 
 ## Why each folder is self-contained
 
@@ -51,11 +69,11 @@ hPanel → **Websites** → **Add Website** → **Deploy Web App** → GitHub.
 | Repository | this repo |
 | Branch | `production` |
 | Directory / project root | `backend` |
-| Framework preset | Other |
+| Framework preset | Fastify (or Other) |
 | Package manager | npm |
 | Build command | `npm run build` |
-| Output directory | `dist` |
-| Entry file | `dist/cluster.js` |
+| Output directory | leave blank |
+| Entry file | **leave blank** |
 | Node version | 22.x |
 | Domain | `api.your-domain.com` |
 
@@ -87,12 +105,17 @@ Notes:
   environment and binds `0.0.0.0`.
 - **`CLUSTER_WORKERS=1`** is deliberate. With 2 cores shared between both apps,
   one worker each is the sane split, and a single process is the safest shape on a
-  managed platform. `dist/cluster.js` skips forking entirely at `1`, so the entry
+  managed platform. `dist/index.js` skips forking entirely at `1`, so the entry
   file stays the same if you later raise it.
 - **`CORS_ORIGINS` must list every real site origin**, `www.` included. A missing
   origin looks like every browser request failing while `curl` still works.
-- If the app insists on `npm start` rather than an entry file, that works too —
-  `backend/package.json` defines `start` as `node dist/cluster.js`.
+- **Leave "Entry file" and "Output directory" blank.** The Fastify preset does
+  not support them and the deploy fails with *"Fastify framework does not support
+  custom Entry File configuration"* if they are set. The preset starts the app the
+  standard way instead, and `backend/package.json` is set up for that: `main` and
+  the `start` script both point at `dist/index.js`. There is only one entry point,
+  so clustering is chosen by `CLUSTER_WORKERS` at runtime rather than by pointing
+  at a different file.
 
 ### 3. Create the frontend app
 
@@ -226,7 +249,10 @@ at Redis if you need one global budget across replicas.
 | --- | --- |
 | App exits at boot, logs list missing variables | An env var is unset. The message names each one. |
 | `npm install` fails or installs nothing | The app's directory is not `backend` / `frontend`, so it cannot see that folder's `package.json`. |
-| Build succeeds but the app will not start | Entry file wrong. API is `dist/cluster.js`; the frontend should use the Next.js preset. |
+| `Fastify framework does not support custom Entry File configuration` | Clear the Entry file and Output directory fields on the API app. The preset uses `npm start` / `main`, which already point at `dist/index.js`. |
+| `sh: tsc: command not found` during build | Hostinger installs production dependencies only, so anything the build needs must be in `dependencies`, not `devDependencies`. `typescript` and `@types/node` are already there — if you add another build-time tool, put it in `dependencies` too. |
+| `unable to determine transport target for "pino-pretty"` | `NODE_ENV` is not `production` on a production-only install. Set `NODE_ENV=production` (the code now degrades to JSON logs rather than crashing). |
+| Build succeeds but the app will not start | Check `CLUSTER_WORKERS=1` and that all required env vars are set; the log names any that are missing. |
 | Site loads, every API call fails in the browser, `curl` works | `CORS_ORIGINS` is missing the site origin — check `www.`. |
 | Browser console shows calls to `localhost:4000` | `NEXT_PUBLIC_API_URL` was unset at build time. Set it, then **rebuild**. |
 | Scanner returns `503 MIGRATION_REQUIRED` | `supabase db push` has not been run. |

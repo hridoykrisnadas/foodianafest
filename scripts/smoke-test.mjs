@@ -5,7 +5,7 @@
  * that does not depend on a database: it starts, authenticates, enforces roles,
  * validates input, applies CORS and shuts down cleanly.
  *
- * The backend is started exactly the way Hostinger starts it — `dist/cluster.js`
+ * The backend is started exactly the way Hostinger starts it — `npm start` (`dist/index.js`)
  * from inside backend/ — so this exercises the real entry point, not a test-only
  * wrapper.
  *
@@ -64,7 +64,7 @@ async function waitForServer(child, timeoutMs = 30_000) {
 }
 
 const backendDir = path.join(repoRoot, 'backend');
-const server = spawn(process.execPath, [path.join('dist', 'cluster.js')], {
+const server = spawn(process.execPath, [path.join('dist', 'index.js')], {
   cwd: backendDir,
   env: { ...process.env, PORT: String(PORT) },
   stdio: ['ignore', 'pipe', 'pipe'],
