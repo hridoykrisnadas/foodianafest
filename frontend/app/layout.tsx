@@ -1,13 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display, Hind_Siliguri } from 'next/font/google';
+import { Montserrat, Hind_Siliguri } from 'next/font/google';
 import { ThemeProvider } from '@/lib/theme-context';
 import { LanguageProvider } from '@/lib/language-context';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap' });
+const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-Montserrat', display: 'swap' });
 const hindSiliguri = Hind_Siliguri({ subsets: ['bengali'], weight: ['300', '400', '500', '600', '700'], variable: '--font-bengali', display: 'swap' });
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ const themeScript = `
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="bn" suppressHydrationWarning className={`${inter.variable} ${playfair.variable} ${hindSiliguri.variable}`}>
+    <html lang="bn" suppressHydrationWarning className={`${montserrat.variable} ${hindSiliguri.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

@@ -13,7 +13,8 @@ import {
   Soup, Pizza, Sandwich, Salad, Globe2, Wheat, Flame,
 } from 'lucide-react';
 
-const HERO_IMAGE = 'https://images.pexels.com/photos/15645257/pexels-photo-15645257.jpeg?auto=compress&cs=tinysrgb&h=1200&w=1920';
+// const HERO_IMAGE = 'https://i.ibb.co/670J4Q7K/513073848-24076560382033107-7452798458160731956-n.jpg';
+const HERO_IMAGE = 'https://i.postimg.cc/W1P7R9XG/513099929-24076391128716699-8581022198636302790-n.jpg';
 const FOOD_IMAGE = 'https://images.pexels.com/photos/9792458/pexels-photo-9792458.jpeg?auto=compress&cs=tinysrgb&h=800&w=1200';
 const DEFAULT_EVENT_DATE = '2026-11-05';
 
@@ -173,21 +174,21 @@ export default function Home() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20 pb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark border border-accent/30 mb-6 animate-fade-in-up">
             <Star className="w-3.5 h-3.5 text-accent fill-accent" />
-            <span className={`text-xs font-medium text-accent tracking-wider uppercase ${isBn ? 'font-bengali' : ''}`}>{t.hero.tagline}</span>
+            <span className={`text-xs font-medium text-white font-bold tracking-wider uppercase ${isBn ? 'font-bengali' : ''}`}>{t.hero.tagline}</span>
           </div>
-          <h1 className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.2] mb-3 animate-fade-in-up text-white ${isBn ? 'font-bengali' : ''}`} style={{ animationDelay: '0.1s' }}>
+          <h1 className={`font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.2] mb-5 animate-fade-in-up text-white ${isBn ? 'font-bengali' : ''}`} style={{ animationDelay: '0.1s' }}>
             {t.hero.subTagline}
           </h1>
           <p className={`text-base sm:text-lg md:text-xl text-white/80 mb-3 animate-fade-in-up ${isBn ? 'font-bengali' : ''}`} style={{ animationDelay: '0.2s' }}>{t.hero.subtitle}</p>
           <p className={`text-xs sm:text-sm md:text-base text-white/60 max-w-2xl mx-auto mb-6 animate-fade-in-up ${isBn ? 'font-bengali' : ''}`} style={{ animationDelay: '0.3s' }}>{t.hero.description}</p>
-          <p className={`text-sm sm:text-base text-accent mb-8 animate-fade-in-up ${isBn ? 'font-bengali' : ''}`} style={{ animationDelay: '0.35s' }}>{t.hero.date}</p>
+          <p className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark text-white font-bold border border-accent/30 mb-6 animate-fade-in-up ${isBn ? 'font-bengali' : ''}`} style={{ animationDelay: '0.35s' }}>{t.hero.date}</p>
           <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <p className={`text-sm text-white/60 mb-3 ${isBn ? 'font-bengali' : ''}`}>{t.hero.eventStarts}</p>
             <div className="flex justify-center gap-3 sm:gap-6">
               {[{ value: countdown.days, label: t.hero.days }, { value: countdown.hours, label: t.hero.hours }, { value: countdown.minutes, label: t.hero.minutes }, { value: countdown.seconds, label: t.hero.seconds }].map((unit, i) => (
                 <div key={i} className="flex flex-col items-center">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl glass-dark border border-accent/20 flex items-center justify-center">
-                    <span className="font-display text-2xl sm:text-3xl font-bold text-accent">{String(unit.value).padStart(2, '0')}</span>
+                    <span className="font-display text-2xl sm:text-3xl font-bold text-white font bold">{String(unit.value).padStart(2, '0')}</span>
                   </div>
                   <span className={`text-xs text-white/50 mt-2 ${isBn ? 'font-bengali' : ''}`}>{unit.label}</span>
                 </div>
@@ -469,7 +470,7 @@ export default function Home() {
 
       {/* 8. Dynamic Guest & Management Carousels */}
       {/* Slider A: Chief Guest & Special Guests */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-secondary/20 rounded-3xl">
+      {/* <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-secondary/20 rounded-3xl">
         <div className="text-center mb-10">
           <h2 className={`font-display text-3xl md:text-4xl font-bold text-primary mb-2 ${isBn ? 'font-bengali' : ''}`}>{t.carousels.sectionA.title}</h2>
           <p className={`text-foreground/50 ${isBn ? 'font-bengali' : ''}`}>{t.carousels.sectionA.subtitle}</p>
@@ -485,7 +486,7 @@ export default function Home() {
         ) : (
           <Carousel><TbaCard label={t.carousels.sectionA.tba} /><TbaCard label={t.carousels.sectionA.tba} /><TbaCard label={t.carousels.sectionA.tba} /></Carousel>
         )}
-      </section>
+      </section> */}
 
       {/* Slider B: Advisory Council */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -518,7 +519,7 @@ export default function Home() {
       </section>
 
       {/* Slider D: Sponsors & Brand Partners */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <h2 className={`font-display text-3xl md:text-4xl font-bold text-primary mb-2 ${isBn ? 'font-bengali' : ''}`}>{t.carousels.sectionD.title}</h2>
           <p className={`text-foreground/50 ${isBn ? 'font-bengali' : ''}`}>{t.carousels.sectionD.subtitle}</p>
@@ -532,7 +533,7 @@ export default function Home() {
         ) : (
           <Carousel><TbaCard label={t.carousels.sectionD.tba} /><TbaCard label={t.carousels.sectionD.tba} /><TbaCard label={t.carousels.sectionD.tba} /></Carousel>
         )}
-      </section>
+      </section> */}
 
       {/* 9. 3-Day Festival Programme */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-secondary/20 rounded-3xl">
