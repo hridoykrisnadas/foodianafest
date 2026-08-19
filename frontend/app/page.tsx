@@ -265,6 +265,8 @@ export default function Home() {
         </div>
       </section>
 
+      <ImageParallaxGallery></ImageParallaxGallery>
+
       {/* 3. Event At A Glance */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
@@ -613,7 +615,7 @@ export default function Home() {
         </div>
       </section>
 
-          <ImageParallaxGallery></ImageParallaxGallery>
+          
 
     </div>
   );

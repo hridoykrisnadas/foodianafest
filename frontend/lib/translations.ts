@@ -475,7 +475,7 @@ export const translations = {
     },
     gallery: {
       title: '১ম ফুডিয়ানা ২০১৮ ‘র কিছু স্মৃতি',
-      subtitle: 'স্বাদ । সংস্কৃতি । উৎসব.',
+      subtitle: 'স্বাদ । সংস্কৃতি । উৎসব',
     },
   },
 };
