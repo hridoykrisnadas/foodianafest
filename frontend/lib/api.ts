@@ -7,9 +7,37 @@
  * independently scalable.
  */
 
-export const API_BASE_URL = (
-  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'
-).replace(/\/+$/, '');
+/**
+ * Normalise the configured API origin.
+ *
+ * A value with no scheme is a *relative* path as far as the browser is
+ * concerned, so `fetch('api.example.com/api/x')` resolves against the site
+ * origin and silently becomes `https://site.com/api.example.com/api/x`. Setting
+ * NEXT_PUBLIC_API_URL to a bare hostname is an easy mistake, and it produces
+ * 404s that look nothing like a configuration problem — so a missing scheme is
+ * repaired here rather than trusted.
+ */
+function normalizeApiBaseUrl(raw: string | undefined): string {
+  const trimmed = (raw ?? '').trim().replace(/\/+$/, '');
+  if (!trimmed) return 'http://localhost:4000';
+  if (!/^https?:\/\//i.test(trimmed)) return `https://${trimmed}`;
+  return trimmed;
+}
+
+export const API_BASE_URL = normalizeApiBaseUrl(process.env.NEXT_PUBLIC_API_URL);
+
+/**
+ * Absolute URL for something the API serves directly, such as an uploaded image.
+ *
+ * The upload endpoint returns a root-relative path (`/uploads/<name>`). Putting
+ * that straight into an `<img src>` would resolve it against the site origin,
+ * where nothing serves it — the files live on the API host.
+ */
+export function assetUrl(path: string | null | undefined): string | null {
+  if (!path) return null;
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${API_BASE_URL}${path.startsWith('/') ? path : `/${path}`}`;
+}
 
 const TOKEN_KEY = 'foodiana-staff-token';
 
