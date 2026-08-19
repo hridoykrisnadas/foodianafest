@@ -309,7 +309,7 @@ export default function ImageParallaxGallery() {
       </div>
 
       <div className="mt-5 text-center text-xs text-foreground/40">
-        Drag to explore
+        {/* Drag to explore */}
       </div>
     </section>
   );
