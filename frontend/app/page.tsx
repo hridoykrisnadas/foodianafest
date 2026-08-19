@@ -5,6 +5,8 @@ import { useLanguage } from '@/lib/language-context';
 import { api } from '@/lib/api';
 import { useState, useEffect, useRef } from 'react';
 import FoodCarousel from '@/components/food-carousel';
+import ImageParallaxGallery from '@/components/image-parallax-gallery';
+
 import {
   ArrowRight, Star, Leaf, Calendar, Clock, MapPin, Users, Store, Music,
   ChevronLeft, ChevronRight, Plus, Minus, Award, UtensilsCrossed, Baby,
@@ -610,6 +612,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+          <ImageParallaxGallery></ImageParallaxGallery>
+
     </div>
   );
 }

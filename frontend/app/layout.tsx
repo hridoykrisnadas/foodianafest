@@ -5,7 +5,6 @@ import { ThemeProvider } from '@/lib/theme-context';
 import { LanguageProvider } from '@/lib/language-context';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import ImageParallaxGallery from '@/components/image-parallax-gallery';
 
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-Montserrat', display: 'swap' });
 const hindSiliguri = Hind_Siliguri({ subsets: ['bengali'], weight: ['300', '400', '500', '600', '700'], variable: '--font-bengali', display: 'swap' });
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <LanguageProvider>
             <Navbar />
             <main className="pt-16 min-h-screen">{children}</main>
-            <ImageParallaxGallery />
             <Footer />
           </LanguageProvider>
         </ThemeProvider>

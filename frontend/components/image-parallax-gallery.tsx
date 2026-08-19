@@ -187,6 +187,7 @@ export default function ImageParallaxGallery() {
   const isDragging = useRef(false);
   const startX = useRef(0);
   const startScroll = useRef(0);
+  const { t, lang } = useLanguage();
 
   const handlePointerDown = (
     e: React.PointerEvent<HTMLDivElement>
@@ -231,12 +232,12 @@ export default function ImageParallaxGallery() {
   return (
     <section className="relative overflow-hidden py-16 md:py-20">
       <div className="mb-8 text-center px-4">
-        <p className="text-sm font-medium uppercase tracking-[0.25em] text-primary">
-          Foodiana Moments
+        <p className="text-sm font-medium uppercase tracking-[0.25em] text-primary ${isBn ? 'font-bengali' : ''}`}">
+          {t.gallery.title}
         </p>
 
         <h2 className="mt-2 text-3xl md:text-4xl font-bold ${isBn ? 'font-bengali' : ''}`}">
-          Taste. Culture. Celebration.
+          {t.gallery.subtitle}
         </h2>
       </div>
 

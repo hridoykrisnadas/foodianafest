@@ -234,6 +234,11 @@ export const translations = {
       contact: 'Contact', phone: '+880 1700-000000', email: 'info@foodianafest.com',
       address: 'Dhaka, Bangladesh', rights: '© 2026 Foodiana. All rights reserved.',
     },
+
+    gallery: {
+      title: '1st Foodiana 2018 Memories', 
+      subtitle: 'Taste. Culture. Celebration.',
+    },
   },
   bn: {
     nav: { home: 'হোম', register: 'নিবন্ধন', language: 'English', theme: 'থিম' },
@@ -465,8 +470,12 @@ export const translations = {
     footer: {
       about: 'ফুডিয়ানা ২০২৬ বাংলাদেশের প্রথম সারির বার্ষিক খাদ্য, সংস্কৃতি ও লাইফস্টাইল উৎসব, যেখানে ১,৫০,০০০+ দর্শক তিন দিন ধরে উদযাপনে যোগ দেবেন।',
       quickLinks: 'দ্রুত লিংক', adminPanel: 'অ্যাডমিন প্যানেল', qrScanner: 'কিউআর স্ক্যানার',
-      contact: 'যোগাযোগ', phone: '+৮৮০ ১৭০০-০০০০০০', email: 'info@foodiana2026.bd',
+      contact: 'যোগাযোগ', phone: '+৮৮০ ১৭০০-০০০০০০', email: 'info@foodianafest.com',
       address: 'ঢাকা, বাংলাদেশ', rights: '© ২০২৬ ফুডিয়ানা। সর্বস্বত্ব সংরক্ষিত।',
+    },
+    gallery: {
+      title: '১ম ফুডিয়ানা ২০১৮ ‘র কিছু স্মৃতি',
+      subtitle: 'স্বাদ । সংস্কৃতি । উৎসব.',
     },
   },
 };
