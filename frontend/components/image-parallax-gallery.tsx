@@ -5,180 +5,28 @@ import { useLanguage } from '@/lib/language-context';
 
 const galleryImages = [
   {
-    src: '/gallery/foodiana-01 (1).jpg',
+    src: '/gallery/Foodiana Flashback 1.webp',
     alt: 'Foodiana Festival food',
   },
   {
-    src: '/gallery/foodiana-01 (2).jpg',
+    src: '/gallery/Foodiana Flashback 2.webp',
     alt: 'Foodiana Festival',
   },
   {
-    src: '/gallery/foodiana-01 (3).jpg',
+    src: '/gallery/Gana Hobe - Foodiana Flashback.webp',
     alt: 'Foodiana Festival food and culture',
   },
   {
-    src: '/gallery/foodiana-01 (4).jpg',
+    src: '/gallery/Khana Hobe - Foodiana Flashback.webp',
     alt: 'Foodiana Festival event',
   },
   {
-    src: '/gallery/foodiana-01 (5).jpg',
+    src: '/gallery/Khela Hobe - Foodiana Flashback.webp',
     alt: 'Foodiana Festival',
   },
   {
-    src: '/gallery/foodiana-01 (6).jpg',
+    src: '/gallery/Mela Hobe - Foodiana Flashback.webp',
     alt: 'Foodiana Festival food',
-  },
-  {
-    src: '/gallery/foodiana-01 (7).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (8).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (9).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (10).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (11).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (12).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (13).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (14).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (15).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (16).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (17).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (18).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (19).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (20).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (21).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (22).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (23).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (24).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (25).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (26).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (27).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (28).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (29).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (30).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (31).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (32).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (33).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (34).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (35).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (36).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (37).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (8).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (39).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (40).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (41).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (42).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (43).jpg',
-    alt: 'Foodiana Festival',
-  },
-  {
-    src: '/gallery/foodiana-01 (44).jpg',
-    alt: 'Foodiana Festival',
   },
 ];
 
@@ -308,9 +156,9 @@ export default function ImageParallaxGallery() {
         ))}
       </div>
 
-      <div className="mt-5 text-center text-xs text-foreground/40">
-        {/* Drag to explore */}
-      </div>
+      {/* <div className="mt-5 text-center text-xs text-foreground/40">
+        Drag to explore
+      </div> */}
     </section>
   );
 }
