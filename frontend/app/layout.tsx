@@ -15,6 +15,23 @@ export const metadata: Metadata = {
   title: 'Foodiana 2026 — Khana Hobe, Gana Hobe, Mela Hobe, Khela Hobe',
   description: 'The Premier Food, Culture & Lifestyle Festival of Bangladesh. 5-7 November 2026, Dhaka.',
   openGraph: {
+    url: 'https://www.foodianafest.com',
+    siteName: 'Foodiana 2026',
+    description: 'The Premier Food, Culture & Lifestyle Festival of Bangladesh. 5-7 November 2026, Dhaka.',
+    title: 'Foodiana 2026 — Khana Hobe, Gana Hobe, Mela Hobe, Khela Hobe',
+    type: 'website',
+    images: [
+      {
+        url: HERO_IMAGE,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Foodiana 2026 — Khana Hobe, Gana Hobe, Mela Hobe, Khela Hobe',
+    description: 'The Premier Food, Culture & Lifestyle Festival of Bangladesh. 5-7 November 2026, Dhaka.',
     images: [HERO_IMAGE],
   },
 };
