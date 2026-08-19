@@ -230,3 +230,12 @@
 /* Carousel hide scrollbar */
 .carousel-hide-scroll::-webkit-scrollbar { display: none; }
 .carousel-hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

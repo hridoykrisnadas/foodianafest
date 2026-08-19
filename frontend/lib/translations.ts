@@ -231,7 +231,7 @@ export const translations = {
     footer: {
       about: 'Foodiana 2026 is Bangladesh\'s premier annual food, culture, and lifestyle festival, bringing together 150,000+ visitors for three days of celebration.',
       quickLinks: 'Quick Links', adminPanel: 'Admin Panel', qrScanner: 'QR Scanner',
-      contact: 'Contact', phone: '+880 1700-000000', email: 'info@foodiana2026.bd',
+      contact: 'Contact', phone: '+880 1700-000000', email: 'info@foodianafest.com',
       address: 'Dhaka, Bangladesh', rights: '© 2026 Foodiana. All rights reserved.',
     },
   },
