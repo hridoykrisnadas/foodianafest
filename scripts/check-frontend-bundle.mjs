@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 /**
- * Regression guard for the frontend/backend boundary.
+ * Regression guard for the browser/API boundary.
  *
  * The whole point of the split is that the browser holds no database
  * credentials. It is easy to undo that by accident — one `import { createClient }`
  * in a component and the anon key is back in the bundle. This fails the build if
  * that happens, so the boundary is enforced by CI rather than by memory.
  *
- * Run after `npm run build:frontend`.
+ * Run after `npm run build`.
  */
 
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
@@ -29,13 +29,13 @@ if (existsSync(path.join(frontendDir, 'lib', 'supabase.ts'))) {
 const frontendPkg = JSON.parse(readFileSync(path.join(frontendDir, 'package.json'), 'utf8'));
 const allDeps = { ...frontendPkg.dependencies, ...frontendPkg.devDependencies };
 if (allDeps['@supabase/supabase-js']) {
-  failures.push('frontend depends on @supabase/supabase-js again — it should only be a backend dependency');
+  failures.push('frontend depends on @supabase/supabase-js again — it belongs only in the API service');
 }
 
 // --- 2. Built-bundle checks -------------------------------------------------
 
 if (!existsSync(buildDir)) {
-  console.error(`[check] No build found at ${buildDir}. Run "npm run build:frontend" first.`);
+  console.error(`[check] No build found at ${buildDir}. Run "npm run build" first.`);
   process.exit(1);
 }
 

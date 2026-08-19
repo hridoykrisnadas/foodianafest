@@ -2,28 +2,20 @@
   "name": "foodianafest",
   "version": "1.0.0",
   "private": true,
-  "description": "Foodiana 2026 — two self-contained applications: backend/ (Fastify API) and frontend/ (Next.js)",
+  "description": "Foodiana 2026 web frontend (Next.js). The API lives in the foodiana-backend repository.",
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "install:all": "npm --prefix backend install && npm --prefix frontend install",
-    "ci:all": "npm --prefix backend ci && npm --prefix frontend ci",
-    "dev": "sh scripts/dev.sh",
-    "dev:backend": "npm --prefix backend run dev",
-    "dev:frontend": "npm --prefix frontend run dev",
-    "build": "npm run build:backend && npm run build:frontend",
-    "build:backend": "npm --prefix backend run build",
-    "build:frontend": "npm --prefix frontend run build",
-    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck",
+    "install:all": "npm --prefix frontend install",
+    "ci:all": "npm --prefix frontend ci",
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "typecheck": "npm --prefix frontend run typecheck",
     "lint": "npm --prefix frontend run lint",
-    "start:backend": "npm --prefix backend start",
-    "start:frontend": "npm --prefix frontend start",
+    "start": "npm --prefix frontend start",
     "check:frontend-bundle": "node scripts/check-frontend-bundle.mjs",
-    "smoke": "node scripts/smoke-test.mjs",
     "verify:deployment": "node scripts/verify-deployment.mjs",
-    "clean": "rm -rf backend/dist frontend/.next frontend/out",
-    "cluster:up": "docker compose up --build --scale backend=3",
-    "cluster:down": "docker compose down"
+    "clean": "rm -rf frontend/.next frontend/out"
   }
 }

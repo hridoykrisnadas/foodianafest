@@ -12,9 +12,6 @@ node_modules/
 frontend/.next/
 frontend/out/
 
-# backend build output
-backend/dist/
-
 # production
 /build
 

@@ -1,8 +1,11 @@
 name: Verify deployment
 
-# Checks a live deployment from the outside. This catches the failures CI cannot
-# see: a wrong SUPABASE_SERVICE_ROLE_KEY, an unapplied migration, a frontend built
-# with the placeholder API URL, or CORS that does not list the real site origin.
+# Checks the live site from the outside. This catches the failures CI cannot see:
+# a site that is not serving, a bundle built with the placeholder API URL, or an
+# API that does not list this site in its CORS allowlist.
+#
+# The API's own checks (database reachability, auth, migrations) live in the
+# foodiana-backend repository's workflow of the same name.
 #
 # Run it after Hostinger finishes deploying. The scheduled run is a light
 # heartbeat — a dedicated uptime monitor is better if you need tight alerting.
@@ -10,12 +13,12 @@ name: Verify deployment
 on:
   workflow_dispatch:
     inputs:
-      api_url:
-        description: 'API base URL (defaults to the PRODUCTION_API_URL variable)'
-        required: false
-        type: string
       site_url:
         description: 'Site base URL (defaults to the PRODUCTION_SITE_URL variable)'
+        required: false
+        type: string
+      api_url:
+        description: 'API base URL the bundle should point at (defaults to the PRODUCTION_API_URL variable)'
         required: false
         type: string
   schedule:
@@ -27,7 +30,7 @@ permissions:
 
 jobs:
   verify:
-    name: Check the live deployment
+    name: Check the live site
     runs-on: ubuntu-latest
 
     steps:
@@ -40,21 +43,19 @@ jobs:
       - name: Resolve targets
         id: targets
         run: |
-          API_URL="${{ inputs.api_url || vars.PRODUCTION_API_URL }}"
           SITE_URL="${{ inputs.site_url || vars.PRODUCTION_SITE_URL }}"
-          if [ -z "$API_URL" ]; then
-            echo "::error::No API URL. Set the PRODUCTION_API_URL repository variable (Settings -> Secrets and variables -> Actions -> Variables) or pass api_url when dispatching."
+          API_URL="${{ inputs.api_url || vars.PRODUCTION_API_URL }}"
+          if [ -z "$SITE_URL" ] || [ -z "$API_URL" ]; then
+            echo "::error::Both a site URL and an API URL are needed. Set the PRODUCTION_SITE_URL and PRODUCTION_API_URL repository variables (Settings -> Secrets and variables -> Actions -> Variables), or pass them when dispatching."
             exit 1
           fi
-          echo "api_url=$API_URL"   >> "$GITHUB_OUTPUT"
           echo "site_url=$SITE_URL" >> "$GITHUB_OUTPUT"
+          echo "api_url=$API_URL"   >> "$GITHUB_OUTPUT"
 
       - name: Verify
         env:
-          API_URL: ${{ steps.targets.outputs.api_url }}
           SITE_URL: ${{ steps.targets.outputs.site_url }}
-          # Optional. When set, the run also proves the gate migration is applied.
-          ADMIN_PASSWORD: ${{ secrets.PRODUCTION_ADMIN_PASSWORD }}
+          API_URL: ${{ steps.targets.outputs.api_url }}
         run: node scripts/verify-deployment.mjs
 
       - name: Summary
@@ -63,7 +64,7 @@ jobs:
           {
             echo "### Deployment verification"
             echo ""
+            echo "- Site: \`${{ steps.targets.outputs.site_url }}\`"
             echo "- API:  \`${{ steps.targets.outputs.api_url }}\`"
-            echo "- Site: \`${{ steps.targets.outputs.site_url || 'not set' }}\`"
             echo "- Result: **${{ job.status }}**"
           } >> "$GITHUB_STEP_SUMMARY"
