@@ -9,24 +9,24 @@ const galleryImages = [
     alt: 'Foodiana Festival food',
   },
   {
-    src: '/gallery/Foodiana Flashback 2.webp',
-    alt: 'Foodiana Festival',
+    src: '/gallery/Khana Hobe - Foodiana Flashback.webp',
+    alt: 'Foodiana Festival event',
   },
   {
     src: '/gallery/Gana Hobe - Foodiana Flashback.webp',
     alt: 'Foodiana Festival food and culture',
-  },
+  }, 
   {
-    src: '/gallery/Khana Hobe - Foodiana Flashback.webp',
-    alt: 'Foodiana Festival event',
+    src: '/gallery/Mela Hobe - Foodiana Flashback.webp',
+    alt: 'Foodiana Festival food',
   },
   {
     src: '/gallery/Khela Hobe - Foodiana Flashback.webp',
     alt: 'Foodiana Festival',
   },
   {
-    src: '/gallery/Mela Hobe - Foodiana Flashback.webp',
-    alt: 'Foodiana Festival food',
+    src: '/gallery/Foodiana Flashback 2.webp',
+    alt: 'Foodiana Festival',
   },
 ];
 
